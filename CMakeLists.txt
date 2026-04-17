@@ -25,15 +25,24 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(QCoro)
 
-set(PROJECT_SOURCES
-        main.cpp
-        chatclient.h
-        chatclient.cpp
-)
 
 qt_add_executable(Lithium
-    MANUAL_FINALIZATION
-    ${PROJECT_SOURCES}
+    WIN32 MACOSX_BUNDLE
+    main.cpp
+    login.cpp
+    login.h
+    login.ui
+    clientcontroller.cpp
+    clientcontroller.h
+    clientchat.h
+    clientchat.cpp
+    settings.ui
+    form.ui
+    form.h
+    form.cpp
+    settings.h
+    settings.cpp
+
 )
 
 target_link_libraries(Lithium PRIVATE
