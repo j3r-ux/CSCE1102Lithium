@@ -11,6 +11,9 @@ qt_add_executable(Lithium
     login.cpp
     login.h
     login.ui
+    chatclient.h
+    chatclient.cpp
+
 )
 
 target_link_libraries(Lithium
