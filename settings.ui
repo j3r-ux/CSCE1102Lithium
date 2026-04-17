@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>354</width>
+    <height>303</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ===== APP BACKGROUND ===== */
+QWidget {
+    background-color: rgb(245, 247, 250);
+    font-family: &quot;Segoe UI&quot;, Arial;
+    font-size: 13px;
+}
+
+/* ===== TITLES ===== */
+QLabel#titleLabel,
+QLabel#chatTitleLabel,
+QLabel#settingsTitleLabel {
+    font-size: 26px;
+    font-weight: bold;
+    color: rgb(28, 113, 216);
+    padding: 10px;
+}
+
+/* ===== NORMAL LABELS ===== */
+QLabel {
+    color: #333;
+}
+
+/* ===== INPUT FIELDS ===== */
+QLineEdit {
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 6px;
+    min-height: 28px;
+}
+
+QLineEdit:focus {
+    border: 2px solid rgb(28, 113, 216);
+}
+
+/* ===== TEXT AREA (CHAT) ===== */
+QTextEdit {
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+/* ===== LIST (ONLINE USERS) ===== */
+QListWidget {
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* ===== BUTTONS ===== */
+QPushButton {
+    background-color: rgb(28, 113, 216);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    min-height: 32px;
+    font-weight: 500;
+}
+
+/* Hover effect */
+QPushButton:hover {
+    background-color: rgb(53, 132, 228);
+}
+
+/* Click effect */
+QPushButton:pressed {
+    background-color: rgb(20, 90, 180);
+}
+
+/* ===== SECONDARY BUTTON (SIGN UP / BACK) ===== */
+QPushButton#signupButton,
+QPushButton#backButton {
+    background-color: transparent;
+    color: rgb(28, 113, 216);
+    border: 2px solid rgb(28, 113, 216);
+}
+
+QPushButton#signupButton:hover,
+QPushButton#backButton:hover {
+    background-color: rgba(28, 113, 216, 40);
+}
+
+/* ===== DANGER BUTTON (DISCONNECT) ===== */
+QPushButton#disconnectButton {
+    background-color: rgb(200, 50, 50);
+}
+
+QPushButton#disconnectButton:hover {
+    background-color: rgb(220, 70, 70);
+}
+
+/* ===== STATUS LABELS ===== */
+QLabel#statusLabel,
+QLabel#chatStatusLabel,
+QLabel#settingsStatusLabel {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Login error */
+QLabel#statusLabel {
+    color: rgb(200, 0, 0);
+}
+
+/* Chat / settings success */
+QLabel#chatStatusLabel,
+QLabel#settingsStatusLabel {
+    color: rgb(0, 140, 0);
+}
+
+/* ===== CHECKBOX ===== */
+QCheckBox {
+    spacing: 6px;
+}
+
+QCheckBox::indicator {
+    width: 14px;
+    height: 14px;
+}
+
+/* ===== GROUP BOX ===== */
+QGroupBox {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+    color: rgb(28, 113, 216);
+}</string>
+  </property>
+  <widget class="QLabel" name="settingsTitleLabel">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>10</y>
+     <width>231</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;KG Summer Sunshine&quot;;
+color: rgb(28, 113, 216);
+    font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="usernameInfoLabel">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>UserName: Name</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="hostInfoLabel">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>90</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Host:          Local Host</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="portInfoLabel">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>120</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Port:          123456</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="notificationsCheckBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>   Enable notifications</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>180</y>
+     <width>100</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="disconnectButton">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>180</y>
+     <width>100</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Disconnect</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="settingsStatusLabel">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>240</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Status: Connected</string>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>notificationsCheckBox</tabstop>
+  <tabstop>backButton</tabstop>
+  <tabstop>disconnectButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

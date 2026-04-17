@@ -13,6 +13,8 @@ qt_add_executable(Lithium
     login.ui
     clientcontroller.cpp
     clientcontroller.h
+    settings.ui
+
 )
 
 target_link_libraries(Lithium
