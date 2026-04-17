@@ -3,6 +3,7 @@
 #include "form.h"
 #include <QMessageBox>
 
+
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Login)
@@ -35,8 +36,20 @@ void Login::on_pushButton_clicked()
         return;
     }
 
-    QMessageBox::information(this, "Success", "Welcome, " + username + "!");
-    Form *chat = new Form();
-    chat->show();
-    this->hide();
+    if (users.contains(username)) {
+        if (users[username] == password) {
+            QMessageBox::information(this, "Success", "Welcome back, " + username + "!");
+            Form *chat = new Form();
+            chat->show();
+            this->hide();
+        } else {
+            QMessageBox::warning(this, "Error", "Wrong password!");
+        }
+    } else {
+        users[username] = password;
+        QMessageBox::information(this, "Registered", "User created: " + username);
+        Form *chat = new Form();
+        chat->show();
+        this->hide();
+    }
 }

@@ -1,6 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-
+#include <QHash>
 #include <QMainWindow>
 #include "clientcontroller.h"
 
@@ -24,6 +24,7 @@ private slots:
 private:
     Ui::Login *ui;
     ClientController *controller;
+    QHash<QString, QString> users; // username -> password
 };
 
 #endif // LOGIN_H
