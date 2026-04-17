@@ -7,27 +7,31 @@
 class ChatClient : public QObject
 {
     Q_OBJECT
+    public:
+        explicit ChatClient(QObject *parent = nullptr);
+        QCoro::Task<void> connectToServer(const QString &host, quint16 port);
+        void joinRoom(const QString &roomId, const QString &username);
+        void sendMessage(int id, const QString &payload);
+        void sendMessage(const QString &targetUser, const QString &payload);
 
-public:
-    explicit ChatClient(QObject *parent = nullptr);
+    signals:
+        void connectionError(QString errorMessage);
+        void roomMessageReceived(QString sender, QString text, int roomId);
+        void privateMessageReceived(QString sender, QString text, QString sendingUser);
+        void connected();
+        void disconnected();
 
-    void connectToServer(const QString &host, quint16 port);
-    void joinRoom(const QString &roomId, const QString &username);
-    void sendMessage(const QString &roomId, const QString &username, const QString &message);
+    private slots:
+        void onReadyRead();
+        void onConnected();
+        void onDisconnected();
 
-signals:
-    void messageReceived(QString username, QString message);
-    void connected();
-    void disconnected();
+    private:
+        QString sender;
+        QTcpSocket socket;
+        QByteArray buffer; // for handling partial messages
+        void sendJson(QJsonObject);
 
-private slots:
-    void onReadyRead();
-    void onConnected();
-    void onDisconnected();
-
-private:
-    QTcpSocket socket;
-    QByteArray buffer; // for handling partial messages
 };
 
 #endif
