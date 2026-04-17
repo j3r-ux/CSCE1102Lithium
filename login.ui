@@ -6,21 +6,235 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>475</width>
-    <height>573</height>
+    <width>553</width>
+    <height>617</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Login</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+/* ===== MAIN BACKGROUND ===== */
+QMainWindow {
+    background-color: rgb(245, 247, 250);
+}
+
+/* ===== TITLE LABEL ===== */
+QLabel {
+    font-size: 14px;
+    color: #222;
+}
+
+QLabel#titleLabel {
+    font-size: 26px;
+    font-weight: bold;
+    color: rgb(28, 113, 216);
+}
+
+/* ===== INPUT FIELDS ===== */
+QLineEdit {
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 5px;   /* SAFE (small) */
+
+}
+
+QLineEdit:focus {
+    border: 2px solid rgb(28, 113, 216);
+}
+
+/* ===== BUTTONS ===== */
+QPushButton {
+    background-color: rgb(28, 113, 216);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 6px 12px;   /* SAFE padding */
+    min-height: 30px;
+}
+
+/* HOVER (THIS WILL WORK NOW) */
+QPushButton:hover {
+    background-color: rgb(53, 132, 228);
+}
+
+/* CLICK */
+QPushButton:pressed {
+    background-color: rgb(20, 90, 180);
+}
+
+/* ===== SIGN UP BUTTON SPECIAL ===== */
+QPushButton#signupButton {
+    background-color: transparent;
+    color: rgb(28, 113, 216);
+    border: 2px solid rgb(28, 113, 216);
+}
+
+QPushButton#signupButton:hover {
+    background-color: rgba(28, 113, 216, 40);
+}
+
+/* ===== STATUS LABEL ===== */
+QLabel#statusLabel {
+    color: rgb(200, 0, 0);
+    font-weight: bold;
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="usernamelabel">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>18</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Helvetica</family>
+         <pointsize>14</pointsize>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Helvetica&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Username:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>60</y>
+      <width>201</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLineEdit" name="lineEdit"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>310</y>
+      <width>411</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="NewUserLabel">
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>New User?</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="SignUpLabel">
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sign Up</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>150</y>
+      <width>201</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLineEdit" name="lineEdit_2"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>150</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QLabel" name="usernamelabel_2">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>18</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Password:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>340</y>
-      <width>94</width>
-      <height>26</height>
+      <y>410</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -52,143 +266,86 @@ color: black
      <string>Login</string>
     </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QLabel" name="Title">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>100</y>
-      <width>160</width>
-      <height>80</height>
+      <x>40</x>
+      <y>-50</y>
+      <width>481</width>
+      <height>161</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QLabel" name="usernamelabel">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>18</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>18</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Username:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	font: 13pt &quot;KG Summer Sunshine&quot;;
+    font-size: 26px;
+    font-weight: bold;
+    color: rgb(28, 113, 216);
+    padding: 10px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Welcome to Lithium</string>
+    </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_2">
+   <widget class="QLabel" name="Host_label">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>250</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Host:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Host_lineedit">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>250</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Port_label">
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>100</y>
-      <width>241</width>
-      <height>80</height>
+      <y>250</y>
+      <width>41</width>
+      <height>16</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QLineEdit" name="lineEdit"/>
-     </item>
-    </layout>
+    <property name="text">
+     <string>Port:</string>
+    </property>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>310</y>
-      <width>411</width>
-      <height>25</height>
+      <x>120</x>
+      <y>280</y>
+      <width>161</width>
+      <height>16</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="NewUserLabel">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>New User?</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="SignUpLabel">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Sign Up</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="text">
+     <string>Status: Not Connected</string>
+    </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_3">
+   <widget class="QSpinBox" name="portSpinBox">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>200</y>
-      <width>241</width>
-      <height>80</height>
+      <x>240</x>
+      <y>250</y>
+      <width>71</width>
+      <height>21</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_4">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>200</y>
-      <width>160</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_5">
-     <item>
-      <widget class="QLabel" name="usernamelabel_2">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>18</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>18</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Password:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -196,13 +353,20 @@ color: black
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>475</width>
-     <height>23</height>
+     <width>553</width>
+     <height>33</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>Host_lineedit</tabstop>
+  <tabstop>portSpinBox</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>lineEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
