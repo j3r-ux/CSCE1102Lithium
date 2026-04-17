@@ -14,6 +14,11 @@ qt_add_executable(Lithium
     clientcontroller.cpp
     clientcontroller.h
     settings.ui
+    form.ui
+    form.h
+    form.cpp
+    settings.h
+    settings.cpp
 
 )
 

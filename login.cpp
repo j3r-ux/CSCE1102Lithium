@@ -1,5 +1,6 @@
 #include "login.h"
 #include "ui_login.h"
+#include "form.h"
 #include <QMessageBox>
 
 Login::Login(QWidget *parent)
@@ -35,4 +36,7 @@ void Login::on_pushButton_clicked()
     }
 
     QMessageBox::information(this, "Success", "Welcome, " + username + "!");
+    Form *chat = new Form();
+    chat->show();
+    this->hide();
 }
