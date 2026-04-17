@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QMainWindow>
+#include "clientcontroller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +18,12 @@ public:
     Login(QWidget *parent = nullptr);
     ~Login();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::Login *ui;
+    ClientController *controller;
 };
+
 #endif // LOGIN_H
