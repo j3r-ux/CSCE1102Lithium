@@ -2,7 +2,9 @@
 #define CHATCLIENT_H
 
 #include <QObject>
+#include <QCoro/QCoroTask>
 #include <QTcpSocket>
+#include <QJsonObject>
 
 class ChatClient : public QObject
 {
@@ -10,6 +12,7 @@ class ChatClient : public QObject
     public:
         explicit ChatClient(QObject *parent = nullptr);
         QCoro::Task<void> connectToServer(const QString &host, quint16 port);
+        void setUsername(const QString &username) { sender = username; }
         void joinRoom(const QString &roomId, const QString &username);
         void sendMessage(int id, const QString &payload);
         void sendMessage(const QString &targetUser, const QString &payload);
@@ -30,7 +33,7 @@ class ChatClient : public QObject
         QString sender;
         QTcpSocket socket;
         QByteArray buffer; // for handling partial messages
-        void sendJson(QJsonObject);
+        void sendJson(const QJsonObject &data);
 
 };
 
