@@ -134,7 +134,7 @@ QLabel#statusLabel {
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="user_lineedit"/>
      </item>
     </layout>
    </widget>
@@ -144,7 +144,7 @@ QLabel#statusLabel {
       <x>30</x>
       <y>310</y>
       <width>411</width>
-      <height>32</height>
+      <height>44</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -164,17 +164,9 @@ QLabel#statusLabel {
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="SignUpLabel">
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-        </font>
-       </property>
+      <widget class="QPushButton" name="SignUp_button">
        <property name="text">
         <string>Sign Up</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -191,7 +183,7 @@ QLabel#statusLabel {
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="password_lineedit"/>
      </item>
     </layout>
    </widget>
@@ -361,11 +353,11 @@ color: black
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>lineEdit_2</tabstop>
+  <tabstop>password_lineedit</tabstop>
   <tabstop>Host_lineedit</tabstop>
   <tabstop>portSpinBox</tabstop>
   <tabstop>pushButton</tabstop>
-  <tabstop>lineEdit</tabstop>
+  <tabstop>user_lineedit</tabstop>
  </tabstops>
  <resources/>
  <connections/>

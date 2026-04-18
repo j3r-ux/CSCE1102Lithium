@@ -1,5 +1,8 @@
 #ifndef LOGIN_H
 #define LOGIN_H
+#include "clientcontroller.h"
+
+
 
 #include <QMainWindow>
 #include "clientcontroller.h"
@@ -15,11 +18,13 @@ class Login : public QMainWindow
     Q_OBJECT
 
 public:
-    Login(QWidget *parent = nullptr);
+    explicit Login(QWidget *parent = nullptr, ClientController *controller = nullptr);
     ~Login();
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_SignUp_button_clicked();
 
 private:
     Ui::Login *ui;

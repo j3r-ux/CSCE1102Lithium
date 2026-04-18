@@ -1,6 +1,6 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
-
+#include "clientcontroller.h"
 #include <QWidget>
 
 namespace Ui {

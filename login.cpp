@@ -3,24 +3,22 @@
 #include "form.h"
 #include <QMessageBox>
 
-Login::Login(QWidget *parent)
+Login::Login(QWidget *parent, ClientController *controller)
     : QMainWindow(parent)
     , ui(new Ui::Login)
-    , controller(new ClientController())
+    , controller(controller)
 {
     ui->setupUi(this);
 }
-
 Login::~Login()
 {
     delete ui;
-    delete controller;
 }
 
 void Login::on_pushButton_clicked()
 {
-    QString username = ui->lineEdit->text();
-    QString password = ui->lineEdit_2->text();
+    QString username = ui->user_lineedit->text();
+    QString password = ui->password_lineedit->text();
 
     QString usernameError = controller->validateUsername(username);
     QString passwordError = controller->validatePassword(password);
@@ -35,8 +33,41 @@ void Login::on_pushButton_clicked()
         return;
     }
 
-    QMessageBox::information(this, "Success", "Welcome, " + username + "!");
-    Form *chat = new Form();
-    chat->show();
-    this->hide();
+    QString message;
+    bool ok = controller->signIn(username, password, message);
+
+    if (ok) {
+        QMessageBox::information(this, "Success", message);
+
+
+        QMessageBox::information(this, "Success", "Welcome, " + username + "!");
+        Form *chat = new Form();
+        chat->show();
+        this->hide();
+    } else {
+        QMessageBox::warning(this, "Error", message);
+    }
+
+}
+
+void Login::on_SignUp_button_clicked()
+{
+    {
+        QString username = ui->user_lineedit->text();
+        QString password = ui->password_lineedit->text();
+
+
+        QString message;
+        bool ok = controller->signUp(username, password, message);
+
+        if (ok) {
+            QMessageBox::information(this, "Success", message);
+
+            Form *chat = new Form();
+            chat->show();
+            this->hide();
+        } else {
+            QMessageBox::warning(this, "Error", message);
+        }
+}
 }
