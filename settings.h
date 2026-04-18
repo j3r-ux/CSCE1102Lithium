@@ -12,7 +12,7 @@ class Settings : public QWidget
     Q_OBJECT
 
 public:
-    explicit Settings(QWidget *parent = nullptr);
+    explicit Settings(QWidget *parent = nullptr, ClientController *controller = nullptr);
     ~Settings();
 
 private slots:
@@ -22,6 +22,7 @@ private slots:
 
 private:
     Ui::Settings *ui;
+    ClientController *controller;
 };
 
 #endif // SETTINGS_H
