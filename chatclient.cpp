@@ -66,7 +66,7 @@ void ChatClient::onReadyRead()
         // Cleaning buffer
         buffer.remove(0, index + 1);
 
-        if (!receivedDoc.isNull() && receivedDoc.isObject()) { //First check to make sure
+        if (!receivedDoc.isNull() && receivedDoc.isObject()) { //First check to make sure message isn't empty or corrupted
 
             QJsonObject receivedObj = receivedDoc.object();
 

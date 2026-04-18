@@ -38,6 +38,8 @@ void Login::on_pushButton_clicked()
     bool ok = controller->signIn(username, password, message);
 
     if (ok) {
+        chatClient->setUsername(username);
+
         QMessageBox::information(this, "Success", message);
 
 
@@ -62,6 +64,7 @@ void Login::on_SignUp_button_clicked()
         bool ok = controller->signUp(username, password, message);
 
         if (ok) {
+            chatClient->setUsername(username);
             QMessageBox::information(this, "Success", message);
 
             Form *chat = new Form(nullptr, controller, chatClient, username);
