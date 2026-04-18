@@ -19,6 +19,7 @@ qt_add_executable(Lithium
     form.cpp
     settings.h
     settings.cpp
+    User.h
 
 )
 

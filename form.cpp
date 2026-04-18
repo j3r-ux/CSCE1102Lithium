@@ -2,9 +2,11 @@
 #include "ui_form.h"
 #include "settings.h"
 #include "login.h"
-Form::Form(QWidget *parent)
+
+Form::Form(QWidget *parent, ClientController *controller)
     : QWidget(parent)
     , ui(new Ui::Form)
+    , controller(controller)
 {
     ui->setupUi(this);
 }
@@ -13,7 +15,6 @@ Form::~Form()
 {
     delete ui;
 }
-
 void Form::on_settingsButton_clicked()
 {
     Settings *settings = new Settings();
