@@ -9,14 +9,16 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Widgets Network)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Core Widgets Network Qml)
 
 include(FetchContent)
 
-set(QCORO_WITH_QTQML OFF CACHE BOOL "" FORCE)
+set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+set(QCORO_WITH_QML OFF CACHE BOOL "" FORCE)
 set(QCORO_WITH_QTQUICK OFF CACHE BOOL "" FORCE)
 set(QCORO_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(QCORO_BUILD_TESTING OFF CACHE BOOL "" FORCE)
+
 
 FetchContent_Declare(
     QCoro
@@ -34,8 +36,8 @@ qt_add_executable(Lithium
     login.ui
     clientcontroller.cpp
     clientcontroller.h
-    clientchat.h
-    clientchat.cpp
+    chatclient.h
+    chatclient.cpp
     settings.ui
     form.ui
     form.h

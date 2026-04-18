@@ -50,7 +50,7 @@ void ChatClient::sendMessage(const QString &targetUser, const QString &payload)
     sendJson(message);
 }
 
-void ChatClient::sendJson(QJsonObject data){
+void ChatClient::sendJson(const QJsonObject &data){
     QJsonDocument messageDoc(data);
     QByteArray bytes = messageDoc.toJson(QJsonDocument::Compact); //converting to QByteArray
     socket.write(bytes + "\n"); // \n is the delimeter, to seperate messages when receiving messages at the server level and conveying them.
