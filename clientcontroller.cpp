@@ -5,9 +5,9 @@ ClientController::ClientController() {}
 QString ClientController::validateUsername(const QString &username)
 {
     if (username.isEmpty())
-        return "Username cannot be empty.";
+        return "Username cannot be empty";
     if (username.length() < 3)
-        return "Username is too short.";
+        return "Username is too short";
     return "";
 }
 
