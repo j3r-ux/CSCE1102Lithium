@@ -2,39 +2,41 @@
 #define CHATCLIENT_H
 
 #include <QObject>
-#include <QCoro/QCoroTask>
-#include <QTcpSocket>
+#include <QByteArray>
 #include <QJsonObject>
+#include <QString>
+
+#include "ichattransport.h"
 
 class ChatClient : public QObject
 {
     Q_OBJECT
-    public:
-        explicit ChatClient(QObject *parent = nullptr);
-        QCoro::Task<void> connectToServer(const QString &host, quint16 port);
-        void setUsername(const QString &username) { sender = username; }
-        void joinRoom(const QString &roomId, const QString &username);
-        void sendMessage(int id, const QString &payload);
-        void sendMessage(const QString &targetUser, const QString &payload);
+public:
+    explicit ChatClient(IChatTransport *transport, QObject *parent = nullptr);
 
-    signals:
-        void connectionError(QString errorMessage);
-        void roomMessageReceived(QString sender, QString text, int roomId);
-        void privateMessageReceived(QString sender, QString text, QString sendingUser);
-        void connected();
-        void disconnected();
+    void setUsername(const QString &username) { sender = username; }
+    void joinRoom(const QString &roomId, const QString &username);
+    void sendMessage(int id, const QString &payload);
+    void sendMessage(const QString &targetUser, const QString &payload);
 
-    private slots:
-        void onReadyRead();
-        void onConnected();
-        void onDisconnected();
+    // Hooks called by the transport in production and by tests offline.
+    void feedIncoming(const QByteArray &bytes);
+    void notifyConnected();
+    void notifyDisconnected();
+    void notifyConnectionError(const QString &message);
 
-    private:
-        QString sender;
-        QTcpSocket socket;
-        QByteArray buffer; // for handling partial messages
-        void sendJson(const QJsonObject &data);
+signals:
+    void connectionError(QString errorMessage);
+    void roomMessageReceived(QString sender, QString text, int roomId);
+    void privateMessageReceived(QString sender, QString text, QString sendingUser);
+    void connected();
+    void disconnected();
 
+private:
+    void sendJson(const QJsonObject &data);
+    QString sender;
+    IChatTransport *transport;
+    QByteArray buffer;
 };
 
 #endif
