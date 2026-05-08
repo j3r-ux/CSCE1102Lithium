@@ -56,13 +56,9 @@ void ChatClient::feedIncoming(const QByteArray &bytes)
             const QJsonObject obj = doc.object();
             const QString type = obj["type"].toString();
             if (type == "ROOM_MSG") {
-                emit roomMessageReceived(obj["sender"].toString(),
-                                         obj["text"].toString(),
-                                         obj["roomId"].toInt());
+                emit roomMessageReceived(obj["sender"].toString(), obj["text"].toString(), obj["roomId"].toInt());
             } else if (type == "PRIVATE_MSG") {
-                emit privateMessageReceived(obj["sender"].toString(),
-                                            obj["text"].toString(),
-                                            obj["targetUser"].toString());
+                emit privateMessageReceived(obj["sender"].toString(), obj["text"].toString(), obj["targetUser"].toString());
             }
         }
         index = buffer.indexOf('\n');

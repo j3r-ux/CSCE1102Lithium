@@ -1,9 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-#include "clientcontroller.h"
-
-
-
+#include "chatclient.h"
 #include <QMainWindow>
 #include "clientcontroller.h"
 
@@ -18,7 +15,7 @@ class Login : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Login(QWidget *parent = nullptr, ClientController *controller = nullptr);
+    explicit Login(QWidget *parent = nullptr, ClientController *controller = nullptr, ChatClient *chatClient = nullptr);
     ~Login();
 
 private slots:
@@ -29,6 +26,7 @@ private slots:
 private:
     Ui::Login *ui;
     ClientController *controller;
+    ChatClient *chatClient;
 };
 
 #endif // LOGIN_H
