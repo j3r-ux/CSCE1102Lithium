@@ -20,7 +20,7 @@ public:
 private slots:
     void on_backButton_clicked();
     void on_disconnectButton_clicked();
-
+    void on_darkModeCheckBox_toggled(bool checked);
 private:
     Ui::Settings *ui;
     ClientController *controller;

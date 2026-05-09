@@ -1,7 +1,9 @@
 #include "login.h"
 #include "clientcontroller.h"
 #include "chatclient.h"
+#include "theme.h"
 #include <QApplication>
+
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +15,9 @@ int main(int argc, char *argv[])
     auto connectionTask = chatClient.connectToServer("127.0.0.1", 54321);
 
     Login w(nullptr, &controller,  &chatClient);
+
+    Theme::loadFromSettings();
+
     w.show();
 
     return a.exec();
