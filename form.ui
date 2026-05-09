@@ -6,142 +6,133 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>818</width>
-    <height>429</height>
+    <width>935</width>
+    <height>576</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Lithium Chat</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_2">
+  <layout class="QHBoxLayout" name="rootLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="conversationsGroup">
      <property name="title">
-      <string>GroupBox</string>
+      <string>Conversations</string>
      </property>
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>20</y>
-        <width>331</width>
-        <height>361</height>
-       </rect>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Chat</string>
-       </attribute>
+     <layout class="QVBoxLayout" name="conversationsLayout">
+      <item>
        <widget class="QLabel" name="statusLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>311</width>
-          <height>20</height>
-         </rect>
-        </property>
         <property name="text">
          <string>Status: Not connected</string>
         </property>
        </widget>
-       <widget class="QTextEdit" name="chatDisplay">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>35</y>
-          <width>311</width>
-          <height>240</height>
-         </rect>
+      </item>
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="currentIndex">
+         <number>-1</number>
         </property>
-        <property name="readOnly">
+        <property name="tabsClosable">
+         <bool>true</bool>
+        </property>
+        <property name="movable">
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QLineEdit" name="messageInput">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>285</y>
-          <width>220</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Type a message...</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="sendButton">
-        <property name="geometry">
-         <rect>
-          <x>235</x>
-          <y>285</y>
-          <width>85</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Send</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="tab_4">
-       <attribute name="title">
-        <string>Tab 2</string>
-       </attribute>
-      </widget>
-     </widget>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>Clients</string>
-     </property>
-     <widget class="QListWidget" name="listWidget">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>30</y>
-        <width>291</width>
-        <height>301</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="disconnectpushButton">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>340</y>
-        <width>291</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>13</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Disconnect All</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="settingsButton">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>370</y>
-        <width>100</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Settings</string>
-      </property>
-     </widget>
+    <widget class="QWidget" name="sidePanel" native="true">
+     <layout class="QVBoxLayout" name="sideLayout">
+      <item>
+       <widget class="QGroupBox" name="roomsGroup">
+        <property name="title">
+         <string>Rooms</string>
+        </property>
+        <layout class="QVBoxLayout" name="roomsLayout">
+         <item>
+          <widget class="QListWidget" name="roomsListWidget">
+           <property name="toolTip">
+            <string>Double-click a room to open it</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="joinRoomLayout">
+           <item>
+            <widget class="QLineEdit" name="roomIdInput">
+             <property name="placeholderText">
+              <string>Room ID</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="joinRoomButton">
+             <property name="text">
+              <string>Join Room</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="usersGroup">
+        <property name="title">
+         <string>Direct Messages</string>
+        </property>
+        <layout class="QVBoxLayout" name="usersLayout">
+         <item>
+          <widget class="QListWidget" name="usersListWidget">
+           <property name="toolTip">
+            <string>Double-click a user to open a private chat</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="privateChatLayout">
+           <item>
+            <widget class="QLineEdit" name="usernameInput">
+             <property name="placeholderText">
+              <string>Username</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="privateChatButton">
+             <property name="text">
+              <string>Message</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="actionsLayout">
+        <item>
+         <widget class="QPushButton" name="settingsButton">
+          <property name="text">
+           <string>Settings</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="disconnectpushButton">
+          <property name="text">
+           <string>Disconnect</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

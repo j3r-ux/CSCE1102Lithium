@@ -45,6 +45,8 @@ qt_add_executable(Lithium
     settings.h
     settings.cpp
     User.h
+    theme.cpp
+    theme.h
 
 )
 
