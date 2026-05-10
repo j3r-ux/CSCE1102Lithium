@@ -15,6 +15,7 @@ public:
     explicit ChatClient(IChatTransport *transport, QObject *parent = nullptr);
 
     void setUsername(const QString &username) { sender = username; }
+    void login(const QString &username);
     void joinRoom(const QString &roomId, const QString &username);
     void sendMessage(int id, const QString &payload);
     void sendMessage(const QString &targetUser, const QString &payload);
@@ -37,6 +38,8 @@ private:
     QString sender;
     IChatTransport *transport;
     QByteArray buffer;
+    QString pendingLoginUsername; // queued if login() is called before the transport connects
+    bool isConnected = false;
 };
 
 #endif

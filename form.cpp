@@ -160,7 +160,7 @@ void Form::rememberUser(const QString &user)
 
 void Form::on_settingsButton_clicked()
 {
-    Settings *settings = new Settings(nullptr, controller, chatClient);
+    Settings *settings = new Settings(nullptr, controller, chatClient, username);
     settings->show();
     this->hide();
 }
