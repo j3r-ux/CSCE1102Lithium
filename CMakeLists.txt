@@ -47,7 +47,9 @@ qt_add_executable(Lithium
     User.h
     theme.cpp
     theme.h
-
+    ichattransport.h
+    tcpchattransport.h
+    tcpchattransport.cpp
 )
 
 target_link_libraries(Lithium PRIVATE

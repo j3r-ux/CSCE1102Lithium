@@ -1,11 +1,10 @@
 #include "settings.h"
-#include "theme.h"
 #include "ui_settings.h"
 #include "login.h"
 #include "form.h"
+#include "theme.h"
 
-Settings::Settings(QWidget *parent, ClientController *controller,
-                   ChatClient *chatClient, const QString &username)
+Settings::Settings(QWidget *parent, ClientController *controller, ChatClient *chatClient, const QString &username)
     : QWidget(parent)
     , ui(new Ui::Settings)
     , controller(controller)
@@ -14,12 +13,10 @@ Settings::Settings(QWidget *parent, ClientController *controller,
 {
     ui->setupUi(this);
 
-    ui->themeComboBox->addItem("Light");
-    ui->themeComboBox->addItem("Dark");
+    if (!username.isEmpty())
+        ui->usernameInfoLabel->setText(username);
 
-    ui->themeComboBox->setCurrentIndex(
-        Theme::current() == Theme::Mode::Dark ? 1 : 0
-        );
+    ui->darkModeCheckBox->setChecked(Theme::current() == Theme::Mode::Dark);
 }
 
 Settings::~Settings()
@@ -38,9 +35,9 @@ void Settings::on_disconnectButton_clicked()
 {
     Login *login = new Login(nullptr, controller, chatClient);
     login->show();
-
     this->close();
 }
+
 void Settings::on_darkModeCheckBox_toggled(bool checked)
 {
     Theme::apply(checked ? Theme::Mode::Dark : Theme::Mode::Light);
