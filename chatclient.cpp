@@ -8,6 +8,20 @@ ChatClient::ChatClient(IChatTransport *transport, QObject *parent)
 {
 }
 
+void ChatClient::login(const QString &username)
+{
+    sender = username;
+    if (!isConnected) {
+        // transport not up yet — defer until notifyConnected fires
+        pendingLoginUsername = username;
+        return;
+    }
+    QJsonObject obj;
+    obj["type"]     = "LOGIN";
+    obj["username"] = username;
+    sendJson(obj);
+}
+
 void ChatClient::joinRoom(const QString &roomId, const QString &username)
 {
     sender = username;
@@ -67,11 +81,20 @@ void ChatClient::feedIncoming(const QByteArray &bytes)
 
 void ChatClient::notifyConnected()
 {
+    isConnected = true;
+    if (!pendingLoginUsername.isEmpty()) {
+        QJsonObject obj;
+        obj["type"]     = "LOGIN";
+        obj["username"] = pendingLoginUsername;
+        sendJson(obj);
+        pendingLoginUsername.clear();
+    }
     emit connected();
 }
 
 void ChatClient::notifyDisconnected()
 {
+    isConnected = false;
     emit disconnected();
 }
 
