@@ -18,21 +18,20 @@ static bool findString(const string& json, const string& key, string& out)
     size_t p = json.find(needle);
     if (p == string::npos) return false;
 
-    // skip past the key, then any whitespace, then expect an opening quote
+    // skip past the key, then any whitespace, then expect an opening quote (:)
     p += needle.size();
     while (p < json.size() && isspace(static_cast<unsigned char>(json[p]))) ++p;
     if (p >= json.size() || json[p] != '"') return false;
-    ++p; // step past the opening quote
+    p++; // step past the opening quote
 
     // walk the value char by char, decoding escape sequences as we go
     out.clear();
     while (p < json.size() && json[p] != '"') {
-        if (json[p] == '\\' && p + 1 < json.size()) {
+        if (json[p] == '\\' && p + 1 < json.size()) {  // Evaluate what comes after the \ to know if it's a ", a n, or something else.
             char e = json[p + 1];
             switch (e) {
                 case 'n':  out.push_back('\n'); break;
                 case 't':  out.push_back('\t'); break;
-                case 'r':  out.push_back('\r'); break;
                 case '"':  out.push_back('"');  break;
                 case '\\': out.push_back('\\'); break;
                 case '/':  out.push_back('/');  break;
@@ -89,7 +88,6 @@ static void appendEscaped(string& out, const string& s)
     out.push_back('"');
 }
 
-// ---------- Public API --------------------------------------------------------
 
 bool parseMessage(const string& json, Message& msg, string& error)
 {
