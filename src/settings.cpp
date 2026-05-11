@@ -13,8 +13,9 @@ Settings::Settings(QWidget *parent, ClientController *controller, ChatClient *ch
 {
     ui->setupUi(this);
 
-    if (!username.isEmpty())
-        ui->usernameInfoLabel->setText(username);
+    QString displayName = username;
+    if (displayName.isEmpty() && chatClient) displayName = chatClient->username();
+    ui->usernameInfoLabel->setText(displayName.isEmpty() ? "(not signed in)" : displayName);
 
     ui->darkModeCheckBox->setChecked(Theme::current() == Theme::Mode::Dark);
 }

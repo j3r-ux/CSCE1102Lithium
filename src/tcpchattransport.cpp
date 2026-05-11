@@ -2,6 +2,8 @@
 
 #include "chatclient.h"
 
+#include <QTimer>
+
 TcpChatTransport::TcpChatTransport(QObject *parent)
     : QObject(parent)
 {
@@ -13,6 +15,8 @@ TcpChatTransport::TcpChatTransport(QObject *parent)
 
 void TcpChatTransport::connectToServer(const QString &host, quint16 port)
 {
+    lastHost = host;
+    lastPort = port;
     socket.connectToHost(host, port);
 }
 
@@ -34,8 +38,11 @@ void TcpChatTransport::onDisconnected()
 
 void TcpChatTransport::onErrorOccurred(QAbstractSocket::SocketError)
 {
-    // Only treat this as a connect failure if we never managed to connect. Mid-session errors come paired with a `disconnected` signal, which is already handled separately.
-    if (!connectedOnce && client) {
-        client->notifyConnectionError(socket.errorString());
+    // Pre-connect error (e.g. server not running yet): keep retrying asynchronously so the client can start before the server.
+    // Mid-session errors are paired with a `disconnected` signal and handled separately.
+    if (!connectedOnce) {
+        QTimer::singleShot(retryDelayMs, this, [this]() {
+            socket.connectToHost(lastHost, lastPort);
+        });
     }
 }

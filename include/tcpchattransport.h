@@ -29,6 +29,9 @@ private:
     QTcpSocket socket;
     ChatClient *client = nullptr;
     bool connectedOnce = false;
+    QString lastHost;
+    quint16 lastPort = 0;
+    int retryDelayMs = 2000;
 };
 
 #endif

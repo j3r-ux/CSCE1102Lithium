@@ -15,6 +15,8 @@ public:
     explicit ChatClient(IChatTransport *transport, QObject *parent = nullptr);
 
     void setUsername(const QString &username) { sender = username; }
+    QString username() const { return sender; }
+    bool isOnline() const { return isConnected; }
     void login(const QString &username);
     void joinRoom(const QString &roomId, const QString &username);
     void sendMessage(int id, const QString &payload);

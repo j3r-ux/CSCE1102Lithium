@@ -30,27 +30,29 @@ FetchContent_MakeAvailable(QCoro)
 
 qt_add_executable(Lithium
     WIN32 MACOSX_BUNDLE
-    main.cpp
-    login.cpp
-    login.h
-    login.ui
-    clientcontroller.cpp
-    clientcontroller.h
-    chatclient.h
-    chatclient.cpp
-    settings.ui
-    form.ui
-    form.h
-    form.cpp
-    settings.h
-    settings.cpp
-    User.h
-    theme.cpp
-    theme.h
-    ichattransport.h
-    tcpchattransport.h
-    tcpchattransport.cpp
+    src/main.cpp
+    src/login.cpp
+    include/login.h
+    src/login.ui
+    src/clientcontroller.cpp
+    include/clientcontroller.h
+    include/chatclient.h
+    src/chatclient.cpp
+    src/settings.ui
+    src/form.ui
+    include/form.h
+    src/form.cpp
+    include/settings.h
+    src/settings.cpp
+    include/User.h
+    src/theme.cpp
+    include/theme.h
+    include/ichattransport.h
+    include/tcpchattransport.h
+    src/tcpchattransport.cpp
 )
+
+target_include_directories(Lithium PRIVATE include)
 
 target_link_libraries(Lithium PRIVATE
     Qt6::Widgets

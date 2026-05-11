@@ -38,6 +38,9 @@ Form::Form(QWidget *parent, ClientController *controller, ChatClient *chatClient
             this, &Form::on_joinRoomButton_clicked);
     connect(ui->usernameInput, &QLineEdit::returnPressed,
             this, &Form::on_privateChatButton_clicked);
+
+    if (chatClient && chatClient->isOnline()) onChatConnected();
+    else onChatDisconnected();
 }
 
 Form::~Form()
@@ -230,16 +233,19 @@ void Form::on_usersListWidget_itemDoubleClicked(QListWidgetItem *item)
 
 void Form::onChatConnected()
 {
+    ui->statusLabel->setStyleSheet("color: #2e7d32; font-weight: bold;");
     ui->statusLabel->setText("Status: Connected as " + username);
 }
 
 void Form::onChatDisconnected()
 {
+    ui->statusLabel->setStyleSheet("color: #c62828; font-weight: bold;");
     ui->statusLabel->setText("Status: Disconnected");
 }
 
 void Form::onChatError(const QString &err)
 {
+    ui->statusLabel->setStyleSheet("color: #c62828; font-weight: bold;");
     ui->statusLabel->setText("Status: Error - " + err);
 }
 
